@@ -176,4 +176,5 @@ pyrightconfig.json
 # End of https://www.toptal.com/developers/gitignore/api/python
 
 monotonic_align/monotonic_align
+monotonic_align/core.c
 trains/
