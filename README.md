@@ -1,5 +1,5 @@
 # How to use
-(Suggestion) Python == 3.7
+(Suggestion) Python == 3.11
 
 ## Clone this repository
 
@@ -14,18 +14,23 @@ git clone https://github.com/ouor/vits.git
 - Text cleaner is korean by default
 - Remove unnecessary imports from text/cleaners.py
 
+## Install dependencies
+
+python3.XX-dev is required for building monotonic alignment search. If you have multiple python versions, install the required version.
+
+```sh
+sudo apt install software-properties-common
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt update
+sudo apt install python3.11-dev python3.11-venv
+```
+
 ## Create conda environment
 
 ```sh
-conda create -n vits python=3.7
+conda create -n vits python=3.11
 conda activate vits
 conda install conda-forge::uv
-```
-
-## Install PyTorch
-
-```sh
-uv pip install torch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 --index-url https://download.pytorch.org/whl/cu117
 ```
 
 ## Install requirements
@@ -72,6 +77,7 @@ python preprocess.py --text_index 2 --filelists trains/korean/datasets/train/fil
 
 ```sh
 cd monotonic_align
+mkdir monotonic_align
 python setup.py build_ext --inplace
 cd ..
 ```
@@ -84,6 +90,8 @@ python train.py -c trains/korean/config.json -m trains/korean/models
 # Mutiple speakers
 python train_ms.py -c trains/korean/config.json -m trains/korean/models
 ```
+
+Place pre-trained models in "trains/korean/models". Like "trains/korean/models/G_0.pth" and "trains/korean/models/D_0.pth"
 
 ## Tensorboard
 
