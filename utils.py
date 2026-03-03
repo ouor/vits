@@ -96,8 +96,9 @@ def plot_spectrogram_to_numpy(spectrogram):
   plt.tight_layout()
 
   fig.canvas.draw()
-  data = np.fromstring(fig.canvas.tostring_rgb(), dtype=np.uint8, sep='')
-  data = data.reshape(fig.canvas.get_width_height()[::-1] + (3,))
+  rgba_buffer = fig.canvas.buffer_rgba()
+  data = np.asarray(rgba_buffer)
+  data = data[:, :, :3]
   plt.close()
   return data
 
@@ -125,8 +126,9 @@ def plot_alignment_to_numpy(alignment, info=None):
   plt.tight_layout()
 
   fig.canvas.draw()
-  data = np.fromstring(fig.canvas.tostring_rgb(), dtype=np.uint8, sep='')
-  data = data.reshape(fig.canvas.get_width_height()[::-1] + (3,))
+  rgba_buffer = fig.canvas.buffer_rgba()
+  data = np.asarray(rgba_buffer)
+  data = data[:, :, :3]
   plt.close()
   return data
 
@@ -150,7 +152,7 @@ def get_hparams(init=True):
                       help='Model name')
   
   args = parser.parse_args()
-  model_dir = os.path.join("./checkpoints", args.model)
+  model_dir = os.path.join(args.model)
 
   if not os.path.exists(model_dir):
     os.makedirs(model_dir)
