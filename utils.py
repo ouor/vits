@@ -10,6 +10,7 @@ from scipy.io.wavfile import read
 import torch
 
 MATPLOTLIB_FLAG = False
+DIST_COMM_BACKEND = "gloo" if sys.platform == "win32" else "nccl"
 
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 logger = logging
@@ -149,7 +150,7 @@ def get_hparams(init=True):
                       help='Model name')
   
   args = parser.parse_args()
-  model_dir = os.path.join("../drive/MyDrive", args.model)
+  model_dir = os.path.join("./checkpoints", args.model)
 
   if not os.path.exists(model_dir):
     os.makedirs(model_dir)
