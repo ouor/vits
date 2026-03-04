@@ -178,3 +178,35 @@ pyrightconfig.json
 monotonic_align/monotonic_align
 monotonic_align/core.c
 trains/
+
+# ─── VITS 프로젝트 전용 ───────────────────────────────────────────────────────
+# 학습된 모델 가중치
+*.pth
+*.pt
+*.ckpt
+
+# 오디오 출력
+output/
+samples/
+*.wav
+*.mp3
+*.flac
+
+# 테스트 커버리지
+htmlcov/
+.coverage
+coverage.xml
+
+# mypy 캐시
+.mypy_cache/
+
+# 전처리된 파일목록 (원본만 유지)
+*.cleaned
+
+# Gradio 캐시
+gradio_cached_examples/
+flagged/
+
+# 실험 로그
+logs/
+runs/

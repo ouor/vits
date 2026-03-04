@@ -1,0 +1,106 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vits-tts"
+version = "0.1.0"
+description = "VITS: Conditional Variational Autoencoder with Adversarial Learning for End-to-End Text-to-Speech"
+requires-python = ">=3.11"
+dependencies = [
+    "torch>=2.0",
+    "torchvision",
+    "librosa",
+    "scipy",
+    "numpy",
+    "tensorboard",
+    "tqdm",
+    "Cython",
+    "protobuf",
+    "matplotlib",
+]
+
+[project.optional-dependencies]
+# Language support (install only what you need)
+korean     = ["ko-pron", "jamo"]
+japanese   = ["pyopenjtalk", "unidecode"]
+english    = ["unidecode", "eng-to-ipa", "inflect"]
+chinese    = ["jieba", "pypinyin", "cn2an", "opencc"]
+all-langs  = ["vits-tts[korean,japanese,english,chinese]"]
+
+# Tooling
+cli        = ["typer[all]>=0.12", "rich>=13"]
+ui         = ["gradio>=4.0"]
+transcribe = ["openai-whisper"]
+audio      = ["sounddevice", "soundfile"]
+
+# Development
+dev = [
+    "pytest>=8",
+    "pytest-cov",
+    "ruff>=0.4",
+    "mypy>=1.10",
+]
+
+all = ["vits-tts[all-langs,cli,ui,transcribe,audio,dev]"]
+
+[project.scripts]
+vits = "vits.cli.main:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# ─── Ruff ────────────────────────────────────────────────────────────────────
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+src = ["src"]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "UP",  # pyupgrade
+    "B",   # flake8-bugbear
+    "SIM", # flake8-simplify
+]
+ignore = [
+    "E501",  # line too long (handled by formatter)
+    "B008",  # do not perform function calls in default arguments
+    "B905",  # zip() without strict=
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["vits"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+# ─── Mypy ────────────────────────────────────────────────────────────────────
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true   # 외부 라이브러리 stub 없는 것들 허용
+strict = false                  # 점진적 도입 위해 soft 모드
+
+# ─── Pytest ──────────────────────────────────────────────────────────────────
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "-v",
+    "--tb=short",
+    "--cov=src/vits",
+    "--cov-report=term-missing",
+    "--cov-report=html:htmlcov",
+]
+markers = [
+    "slow: marks tests that require GPU or large models (skip with -m 'not slow')",
+    "integration: marks end-to-end integration tests",
+]
