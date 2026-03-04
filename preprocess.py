@@ -6,8 +6,8 @@ if __name__ == '__main__':
   parser = argparse.ArgumentParser()
   parser.add_argument("--out_extension", default="cleaned")
   parser.add_argument("--text_index", default=1, type=int)
-  parser.add_argument("--filelists", nargs="+", default=["./trains/korean/filelist_train.txt", "./trains/korean/filelist_val.txt"])
-  parser.add_argument("--text_cleaners", nargs="+", default=["korean_cleaners"])
+  parser.add_argument("--filelists", nargs="+", default=["./trains/sample/filelist_train.txt", "./trains/sample/filelist_val.txt"])
+  parser.add_argument("--text_cleaners", nargs="+", default=["cjke_cleaners2"])
 
   args = parser.parse_args()
     

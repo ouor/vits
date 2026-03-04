@@ -68,10 +68,10 @@ trains/korean/datasets/val/001.wav|0|안녕하세요.
 If you have done this, set "cleaned_text" to true in config.json
 ```sh
 # Single speaker
-python preprocess.py --text_index 1 --filelists trains/korean/datasets/train/filelist_train.txt trains/korean/datasets/val/filelist_val.txt
+python preprocess.py --text_index 1 --filelists trains/sample/filelist_train.txt trains/sample/filelist_val.txt
 
 # Mutiple speakers
-python preprocess.py --text_index 2 --filelists trains/korean/datasets/train/filelist_train.txt trains/korean/datasets/val/filelist_val.txt
+python preprocess.py --text_index 2 --filelists trains/sample/filelist_train.txt trains/sample/filelist_val.txt
 ```
 ## Build monotonic alignment search
 
@@ -85,18 +85,18 @@ cd ..
 
 ```sh
 # Single speaker
-python train.py -c trains/korean/config.json -m trains/korean/models
+python train.py -c trains/sample/config.json -m trains/sample/models
 
 # Mutiple speakers
-python train_ms.py -c trains/korean/config.json -m trains/korean/models
+python train_ms.py -c trains/sample/config.json -m trains/sample/models
 ```
 
-Place pre-trained models in "trains/korean/models". Like "trains/korean/models/G_0.pth" and "trains/korean/models/D_0.pth"
+Place pre-trained models in "trains/sample/models". Like "trains/sample/models/G_0.pth" and "trains/sample/models/D_0.pth"
 
 ## Tensorboard
 
 ```sh
-tensorboard --logdir=trains/korean/models
+tensorboard --logdir=trains/sample/models
 ```
 
 ## Inference
