@@ -11,20 +11,21 @@ tensorboard
 matplotlib
 tqdm
 
-# unidecode==1.3.4 # english, japanese
+unidecode==1.3.4 # english, japanese
 
-# eng_to_ipa==0.0.2 # english
-# inflect==6.0.0 # english
+eng_to_ipa==0.0.2 # english
+inflect==6.0.0 # english
 
 ko_pron # korean
 jamo # korean
 
-# pyopenjtalk==0.2.0 # japanese
+pyopenjtalk==0.2.0 # japanese
 
-# jieba==0.42.1 # chinese
-# pypinyin==0.44.0 # chinese
-# cn2an==0.5.17 # chinese
-# opencc==1.1.1 # chinese
+jieba==0.42.1 # chinese
+pypinyin==0.44.0 # chinese
+cn2an==0.5.17 # chinese
+opencc==1.1.1 # chinese
+
 # indic_transliteration==2.3.37 # sanskrit
 
 # num_thai==0.0.5 # thai

@@ -14,11 +14,11 @@ _punctuation = ',.!?-~…'
 _letters = 'AEINOQUabdefghijkmnoprstuvwyzʃʧʦ↓↑ '
 '''
 
-# korean_cleaners`
+'''# korean_cleaners
 _pad        = '_'
 _punctuation = ',.!?…~'
 _letters = 'ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎㄲㄸㅃㅆㅉㅏㅓㅗㅜㅡㅣㅐㅔ '
-
+'''
 
 '''# chinese_cleaners
 _pad        = '_'
@@ -50,11 +50,11 @@ _punctuation = '.!? '
 _letters = 'กขฃคฆงจฉชซฌญฎฏฐฑฒณดตถทธนบปผฝพฟภมยรฤลวศษสหฬอฮฯะัาำิีึืุูเแโใไๅๆ็่้๊๋์'
 '''
 
-'''# cjke_cleaners2
+# cjke_cleaners2
 _pad        = '_'
 _punctuation = ',.!?-~…'
 _letters = 'NQabdefghijklmnopstuvwxyzɑæʃʑçɯɪɔɛɹðəɫɥɸʊɾʒθβŋɦ⁼ʰ`^#*=ˈˌ→↓↑ '
-'''
+
 
 '''# shanghainese_cleaners
 _pad        = '_'
